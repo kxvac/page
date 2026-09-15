@@ -1,3 +1,5 @@
+# Trigger extraction v2
+
 name: Extract project ZIP
 
 on:
@@ -15,14 +17,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Extract project
         run: |
           rm -rf gamer-profile-site-cf
           unzip -o gamer-profile-site-cloudflare.zip
           cp -R gamer-profile-site-cf/. .
           rm -rf gamer-profile-site-cf gamer-profile-site-cloudflare.zip index-DgrNH6Qa.js
-
       - name: Commit extracted project
         run: |
           git config user.name 'github-actions[bot]'
